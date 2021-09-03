@@ -21,12 +21,13 @@ const searchCocktail = () => {
         .then(data => loadSearchResult(data))
 };
 const loadSearchResult = (drinks) => {
+    console.log(drinks);
     loadDataDiv.textContent = "";
     detailsInfo.textContent = "";
     toggleSpinner("none");
     toggleLoadDataDiv("block");
     const totaldrinks = drinks.drinks;
-    if (totaldrinks.length > 0) {
+    if (totaldrinks !== null) {
         totaldrinks.forEach(drink => {
             const div = document.createElement("div");
             div.classList.add("col");
@@ -43,7 +44,7 @@ const loadSearchResult = (drinks) => {
         const h4 = document.createElement("h4");
         h4.classList.add("no-result");
         h4.innerText = "Sorry!! No result Found. Try Again!!";
-        loadDataDiv.appendChild(h4);
+        detailsInfo.appendChild(h4);
     }
 };
 const loadDetails = (drinkId) => {
